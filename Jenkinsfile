@@ -32,7 +32,7 @@ pipeline {
         stage('Publish API') {
             steps {
                 bat '''
-                    dotnet publish API\API.csproj --configuration "%CONFIGURATION%" --no-build --output artifacts\api
+                    dotnet publish API/API.csproj --configuration "%CONFIGURATION%" --no-build --output artifacts/api
                 '''
             }
             post {
