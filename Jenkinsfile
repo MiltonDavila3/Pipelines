@@ -22,19 +22,17 @@ pipeline {
 
         stage('Restore & Build') {
             steps {
-                sh '''
-                    set -eux
+                bat '''
                     dotnet restore Restore.sln
-                    dotnet build Restore.sln --configuration "$CONFIGURATION" --no-restore
+                    dotnet build Restore.sln --configuration "%CONFIGURATION%" --no-restore
                 '''
             }
         }
 
         stage('Publish API') {
             steps {
-                sh '''
-                    set -eux
-                    dotnet publish API/API.csproj --configuration "$CONFIGURATION" --no-build --output artifacts/api
+                bat '''
+                    dotnet publish API\API.csproj --configuration "%CONFIGURATION%" --no-build --output artifacts\api
                 '''
             }
             post {
